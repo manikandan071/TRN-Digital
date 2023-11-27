@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "trn-digital",
+    "libraryId": "072e06cf-8c78-40c3-8be3-6201ac5f47d8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "TRNDigital",
+    "solutionShortDescription": "TRNDigital description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

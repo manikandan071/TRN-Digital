@@ -1,0 +1,50 @@
+// @import '~office-ui-fabric-react/dist/sass/References.scss';
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.closeicon i {
+  font-size: 10px;
+}
+.modelMain{
+  display: flex;
+  width: 100%;
+  padding: 0px 0px 30px 0px;
+  flex-wrap: wrap;
+}
+.modelSec{
+  width: 50%;
+  display: flex;
+}
+.modelBox{
+  width: 100%;
+  display: flex;
+  padding: 12px 18px;
+}
+.modelButton{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.modelTitle{
+  width: 100%;
+  text-align: center;
+  background-color: #446f3c;
+  margin: 10px 0px 15px 0px;
+}
+.viewBtn:hover{
+  background-color: #a9b146;
+  color: #fff;
+}
+.editBtn:hover{
+  background-color: #5b6de7;
+  color: #fff;
+}
+.noRecordsec {
+  text-align: center;
+  margin-top: 10px;
+}
+.textfeild{
+  border: none!important;
+}
