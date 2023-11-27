@@ -9,7 +9,6 @@ import {
   IDetailsListStyles,
   IIconProps,
   SelectionMode,
-  mergeStyleSets,
   IconButton,
   DefaultButton,
   Modal,
@@ -110,7 +109,6 @@ export default function Dashboard(prop: any): JSX.Element {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(currpage);
   const [IsEditPopup, setIsEditPopup] = useState(false);
-  console.log(displayData);
 
   let columns = [
     {
@@ -257,7 +255,6 @@ export default function Dashboard(prop: any): JSX.Element {
       .get()
       .then((res) => {
         let documentListsArr: any[] = [];
-        console.log(res);
         if (res.length > 0) {
           res.forEach((data) => {
             documentListsArr.push({
@@ -302,7 +299,6 @@ export default function Dashboard(prop: any): JSX.Element {
   };
 
   const onChangeSearchFun = (event, value) => {
-    console.log(value);
     setSearchValue(value);
     let SearchFilter = masterData.filter((data) => {
       if (data[selectOption] && value != "") {
@@ -312,7 +308,6 @@ export default function Dashboard(prop: any): JSX.Element {
       }
       // data[selectOption].toLowerCase().includes(value.toLowerCase())
     });
-    console.log(SearchFilter);
     if (SearchFilter.length > 0) {
       setDuplicateData([...SearchFilter]);
       paginateFunction(1, [...SearchFilter]);
@@ -351,7 +346,6 @@ export default function Dashboard(prop: any): JSX.Element {
   };
 
   const submitFunction = async () => {
-    console.log(selectList);
     try {
       await spweb.lists
         .getByTitle(`${prop.libraryName}`)
@@ -366,7 +360,6 @@ export default function Dashboard(prop: any): JSX.Element {
           VendorName: selectList[0].VendorName,
         })
         .then((res) => {
-          console.log(res);
           masterData.forEach((data) => {
             if (data.Id === selectList[0].Id) {
               data.DrawingNumber = selectList[0].DrawingNumber;
@@ -400,23 +393,12 @@ export default function Dashboard(prop: any): JSX.Element {
       .getByTitle(`${prop.libraryName}`)
       .renderListDataAsStream({ ViewXml: query, Paging: data.substring(1) })
       .then((data) => {
-        console.log(data);
         allData.push(...data.Row);
         if (data.NextHref) {
           getPagedData(data.NextHref, query);
         } else {
           allData.forEach((data) => {
-            console.log(
-              data.DrawingNumber,
-              data.DocumentDate,
-              data.DocumentDescription,
-              data.DocumentTitle,
-              data.RevisionNumber,
-              data.VendorName
-            );
             let fileName = data.FileRef.split("/").pop();
-            console.log(fileName);
-
             tempArr.push({
               Id: data.ID,
               DrawingNumber: data.DrawingNumber ? data.DrawingNumber : "",
@@ -433,7 +415,6 @@ export default function Dashboard(prop: any): JSX.Element {
               File: fileName,
             });
           });
-          console.log(tempArr);
           setMasterData([...tempArr]);
           setDisplayData([...tempArr]);
           setDuplicateData([...tempArr]);
@@ -451,7 +432,6 @@ export default function Dashboard(prop: any): JSX.Element {
       .getByTitle(`${prop.libraryName}`)
       .renderListDataAsStream({ ViewXml: query })
       .then((data) => {
-        console.log(data);
         allData.push(...data.Row);
         if (data.NextHref) {
           getPagedData(data.NextHref, query);
